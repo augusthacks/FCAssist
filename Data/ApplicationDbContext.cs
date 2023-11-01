@@ -11,7 +11,7 @@ namespace FCAssist.Data
         {
         }
         public DbSet<FCAssist.Models.Investigation> Investigation { get; set; } = default!;
-        public DbSet<FCAssist.Models.TaskFile> InvestigationFile { get; set; } = default!;
+        public DbSet<FCAssist.Models.InvestigationFile> InvestigationFile { get; set; } = default!;
         public DbSet<FCAssist.Models.InvestigationTask> InvestigationTask { get; set; } = default!;
         public DbSet<FCAssist.Models.FileFormat> InvestigationFileFormat { get; set; } = default!;
         public DbSet<FCAssist.Models.FileContext> InvestigationFileContext { get; set; } = default!;

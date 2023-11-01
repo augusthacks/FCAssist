@@ -15,9 +15,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Investigation.Id" />
             <div class="form-group">
-                <label asp-for="Investigation.FileNumber" class="control-label"></label>
-                <input asp-for="Investigation.FileNumber" class="form-control" />
-                <span asp-validation-for="Investigation.FileNumber" class="text-danger"></span>
+                <label asp-for="Investigation.CaseId" class="control-label"></label>
+                <input asp-for="Investigation.CaseId" class="form-control" />
+                <span asp-validation-for="Investigation.CaseId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Investigation.OperationName" class="control-label"></label>
@@ -30,9 +30,9 @@
                 <span asp-validation-for="Investigation.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Investigation.FileCoordinator" class="control-label"></label>
-                <input asp-for="Investigation.FileCoordinator" class="form-control" />
-                <span asp-validation-for="Investigation.FileCoordinator" class="text-danger"></span>
+                <label asp-for="Investigation.FileCoordinatorId" class="control-label"></label>
+                <input asp-for="Investigation.FileCoordinatorId" class="form-control" />
+                <span asp-validation-for="Investigation.FileCoordinatorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Investigation.PROSCreationDate" class="control-label"></label>

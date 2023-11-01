@@ -42,7 +42,7 @@ namespace FCAssist.Migrations
                     b.Property<string>("FileCoordinatorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("FileNumber")
+                    b.Property<int>("CaseId")
                         .HasColumnType("int");
 
                     b.Property<string>("OperationName")
@@ -147,7 +147,7 @@ namespace FCAssist.Migrations
                     b.Property<string>("CaseName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CaseNumber")
+                    b.Property<int>("CaseId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedById")

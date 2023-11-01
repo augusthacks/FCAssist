@@ -37,7 +37,7 @@ namespace FCAssist.Pages.Investigations
             {
                 return Page();
             }
-            if (_context.Investigation.Any(i => i.OperationName == Investigation.OperationName || i.FileNumber == Investigation.FileNumber))
+            if (_context.Investigation.Any(i => i.OperationName == Investigation.OperationName || i.CaseId == Investigation.CaseId))
             {
                 ModelState.AddModelError("name number", "An investigation with this name/number already exists.");
                 return RedirectToPage("/Error", ModelState);

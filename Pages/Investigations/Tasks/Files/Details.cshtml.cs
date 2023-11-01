@@ -19,7 +19,7 @@ namespace FCAssist.Pages.Investigations.Files
             _context = context;
         }
 
-      public TaskFile InvestigationFile { get; set; } = default!; 
+      public InvestigationFile InvestigationFile { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

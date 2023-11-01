@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Investigations[0].FileNumber)
+                @Html.DisplayNameFor(model => model.Investigations[0].CaseId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Investigations[0].OperationName)
@@ -23,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Investigations[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Investigations[0].FileCoordinator)
+                @Html.DisplayNameFor(model => model.Investigations[0].FileCoordinatorId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Investigations[0].PROSCreationDate)
@@ -38,7 +38,7 @@
 @foreach (var item in Model.Investigations) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FileNumber)
+                @Html.DisplayFor(modelItem => item.CaseId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OperationName)
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FileCoordinator)
+                @Html.DisplayFor(modelItem => item.FileCoordinatorId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PROSCreationDate)

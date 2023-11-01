@@ -29,7 +29,7 @@ namespace FCAssist.Pages.Investigations.Files
 
         public SelectList TeamMembers { get; set; }
         [BindProperty]
-        public List<TaskFile> InvestigationFiles { get; set; } = default!;
+        public List<InvestigationFile> InvestigationFiles { get; set; } = default!;
         public List<FileInfo> UploadedFiles { get; set; }
 
         public IActionResult OnGet(string udir)
@@ -42,7 +42,7 @@ namespace FCAssist.Pages.Investigations.Files
         public async Task<IActionResult> OnPostAsync()
         {
             //InvestigationDocuments.UploadedBy = User.Identity.Name;
-            foreach (TaskFile investigationFile in InvestigationFiles)
+            foreach (InvestigationFile investigationFile in InvestigationFiles)
             {
                 if (!ModelState.IsValid || _context.InvestigationFile == null || InvestigationFiles == null)
                 {

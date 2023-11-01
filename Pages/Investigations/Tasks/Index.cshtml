@@ -14,10 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.InvestigationTask[0].CaseNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InvestigationTask[0].CaseName)
+                @Html.DisplayNameFor(model => model.InvestigationTask[0].CaseId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.InvestigationTask[0].TaskNumber)
@@ -38,10 +35,7 @@
 @foreach (var item in Model.InvestigationTask) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CaseNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CaseName)
+                @Html.DisplayFor(modelItem => item.CaseId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TaskNumber)

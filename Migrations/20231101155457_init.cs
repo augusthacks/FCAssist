@@ -171,7 +171,7 @@ namespace FCAssist.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FileNumber = table.Column<int>(type: "int", nullable: false),
+                    CaseId = table.Column<int>(type: "int", nullable: false),
                     OperationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FileCoordinatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -194,7 +194,7 @@ namespace FCAssist.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CaseNumber = table.Column<int>(type: "int", nullable: false),
+                    CaseId = table.Column<int>(type: "int", nullable: false),
                     CaseName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TaskNumber = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),

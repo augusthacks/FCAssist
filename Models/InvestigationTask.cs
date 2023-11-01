@@ -7,13 +7,13 @@ public class InvestigationTask
 {
     [Key]
     public int Id { get; set; }
-    public int CaseNumber { get; set; }
+    public int CaseId { get; set; }
     public int TaskNumber { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
-    public IList<TaskFile>? TaskFiles { get; set; }
+    public List<InvestigationFile>? TaskFiles { get; set; }
     public int? ParentTask { get; set; }
-    public IList<int>? Subtasks { get; set; }
+    public List<int>? Subtasks { get; set; }
     public string? CreatedBy { get; set; }
     public string? AssignedBy { get; set; }
     public string? AssignedTo { get; set; }
