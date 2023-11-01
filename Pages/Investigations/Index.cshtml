@@ -1,0 +1,66 @@
+﻿@page
+@model FCAssist.Pages.Investigations.InvestigationIndexModel
+
+@{
+    ViewData["Title"] = "Investigations Index";
+}
+
+<h1>Investigations</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations[0].FileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations[0].OperationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations[0].FileCoordinator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations[0].PROSCreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations[0].FCACreationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Investigations) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileCoordinator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROSCreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FCACreationDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+﻿@page
+@model FCAssist.Pages.Investigations.Tasks.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>InvestigationTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InvestigationTask.Id" />
+            <div class="form-group">
+                <label asp-for="InvestigationTask.CaseNumber" class="control-label"></label>
+                <input asp-for="InvestigationTask.CaseNumber" class="form-control" />
+                <span asp-validation-for="InvestigationTask.CaseNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationTask.CaseName" class="control-label"></label>
+                <input asp-for="InvestigationTask.CaseName" class="form-control" />
+                <span asp-validation-for="InvestigationTask.CaseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationTask.TaskNumber" class="control-label"></label>
+                <input asp-for="InvestigationTask.TaskNumber" class="form-control" />
+                <span asp-validation-for="InvestigationTask.TaskNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationTask.Title" class="control-label"></label>
+                <input asp-for="InvestigationTask.Title" class="form-control" />
+                <span asp-validation-for="InvestigationTask.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationTask.Description" class="control-label"></label>
+                <input asp-for="InvestigationTask.Description" class="form-control" />
+                <span asp-validation-for="InvestigationTask.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationTask.CreationDateTime" class="control-label"></label>
+                <input asp-for="InvestigationTask.CreationDateTime" class="form-control" />
+                <span asp-validation-for="InvestigationTask.CreationDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

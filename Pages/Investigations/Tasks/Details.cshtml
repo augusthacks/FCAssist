@@ -1,0 +1,55 @@
+﻿@page
+@model FCAssist.Pages.Investigations.Tasks.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>InvestigationTask</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvestigationTask.CaseNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvestigationTask.CaseNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvestigationTask.CaseName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvestigationTask.CaseName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvestigationTask.TaskNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvestigationTask.TaskNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvestigationTask.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvestigationTask.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvestigationTask.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvestigationTask.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvestigationTask.CreationDateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvestigationTask.CreationDateTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.InvestigationTask?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

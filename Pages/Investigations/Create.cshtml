@@ -1,0 +1,69 @@
+﻿@page
+@model FCAssist.Pages.Investigations.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Investigation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Investigation.FileNumber" class="control-label">File Number</label>
+                <input asp-for="Investigation.FileNumber" class="form-control" />
+                <span asp-validation-for="Investigation.FileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Investigation.OperationName" class="control-label">Operation Name</label>
+                <input asp-for="Investigation.OperationName" class="form-control" />
+                <span asp-validation-for="Investigation.OperationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Investigation.Description" class="control-label"></label>
+                <textarea asp-for="Investigation.Description" rows="10" cols="50" class="form-control"></textarea>
+                <span asp-validation-for="Investigation.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Investigation.FileCoordinator" class="control-label">File Coordinator</label>
+                <select asp-for="Investigation.FileCoordinator" class="form-control" value="@User.Identity">
+                    @foreach (var member in Model.Members)
+                    {
+                        <option value="@member.Id">@member.UserName</option>
+                    }
+                </select>
+                <span asp-validation-for="Investigation.FileCoordinator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Investigation.TeamMembers" class="control-label">Team Members</label>
+                <select asp-for="Investigation.TeamMembers" class="form-control">
+                    @foreach (var member in Model.Members)
+                    {
+                        <option value="@member.Id">@member.UserName</option>
+                    }
+                </select>
+                <span asp-validation-for="Investigation.TeamMembers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Investigation.PROSCreationDate" class="control-label">Pros Creation Date</label>
+                <input asp-for="Investigation.PROSCreationDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" />
+                <span asp-validation-for="Investigation.PROSCreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" style="margin: 10px;"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

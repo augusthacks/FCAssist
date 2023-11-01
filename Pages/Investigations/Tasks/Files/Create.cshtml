@@ -1,0 +1,65 @@
+﻿@page
+@model FCAssist.Pages.Investigations.Files.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+
+    int DocumentCount = 0;
+}
+
+<h1>Create</h1>
+
+<h4>New Investigation Document</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            @foreach (FileInfo file in Model.UploadedFiles)
+            {
+                <h2>Document @(DocumentCount + 1)</h2>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="InvestigationFiles[DocumentCount].Name" class="control-label"></label>
+                    <input asp-for="InvestigationFiles[DocumentCount].Name" class="form-control" value="@file.Name"/>
+                    <span asp-validation-for="InvestigationFiles[DocumentCount].Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InvestigationFiles[DocumentCount].Description" class="control-label"></label>
+                    <input asp-for="InvestigationFiles[DocumentCount].Description" class="form-control" />
+                    <span asp-validation-for="InvestigationFiles[DocumentCount].Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InvestigationFiles[DocumentCount].Format" class="control-label"></label>
+                    <select asp-for="InvestigationFiles[DocumentCount].Format" asp-items="@Model.InvestigationFileFormats" class="form-control"></select>
+                    <span asp-validation-for="InvestigationFiles[DocumentCount].Format" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InvestigationFiles[DocumentCount].Context" class="control-label"></label>
+                    <select asp-for="InvestigationFiles[DocumentCount].Context" asp-items="@Model.InvestigationFileContexts" class="form-control"></select>
+                    <span asp-validation-for="InvestigationFiles[DocumentCount].Context" class="text-danger"></span>
+                </div>
+                
+                /***
+                <div class="form-group">
+                    <label asp-for="InvestigationFiles[DocumentCount].UploadDateTime" class="control-label"></label>
+                    <input asp-for="InvestigationFiles[DocumentCount].UploadDateTime" class="form-control" value="@DateTime.Now.ToString()" />
+                    <span asp-validation-for="InvestigationFiles[DocumentCount].UploadDateTime" class="text-danger"></span>
+                </div>
+                ***/
+
+                DocumentCount++;
+            }
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" style="margin: 10px;"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="All">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

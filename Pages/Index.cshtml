@@ -1,0 +1,77 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "FCAssist";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="text-center">
+        <h1 class="display-4">Your Tasks</h1>
+    </div>
+    
+    // List all tasks the user is assigned to.
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvestigationTasks[0].CaseNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvestigationTasks[0].CaseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvestigationTasks[0].TaskNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvestigationTasks[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvestigationTasks[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvestigationTasks[0].CreationDateTime)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.InvestigationTasks)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CaseNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CaseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDateTime)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Please login to begin accessing investigations.</p>
+    </div>
+}

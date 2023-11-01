@@ -1,0 +1,30 @@
+﻿@page
+@model FCAssist.Pages.Investigations.Files.UploadModel
+
+@{
+    ViewData["Title"] = "Upload";
+}
+
+<h1>Upload</h1>
+
+<h4>Investigation Document</h4>
+<hr />
+<div class="row">
+    <form enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label class="file">
+                <input type="file" asp-for="UploadedDocuments" multiple>
+                <span class="file-custom"></span>
+            </label>
+            <input asp-page-handler="Upload" class="btn btn-primary" type="submit" value="Upload">
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-page="All">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
