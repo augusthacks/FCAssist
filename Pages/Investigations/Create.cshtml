@@ -29,24 +29,24 @@
                 <span asp-validation-for="Investigation.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Investigation.FileCoordinatorId" class="control-label">File Coordinator</label>
-                <select asp-for="Investigation.FileCoordinatorId" class="form-control" value="@User.Identity">
+                <label asp-for="Investigation.FileCoordinator" class="control-label">File Coordinator</label>
+                <select asp-for="Investigation.FileCoordinator" class="form-control" value="@User.Identity">
                     @foreach (var member in Model.Members)
                     {
                         <option value="@member.Id">@member.UserName</option>
                     }
                 </select>
-                <span asp-validation-for="Investigation.FileCoordinatorId" class="text-danger"></span>
+                <span asp-validation-for="Investigation.FileCoordinator" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Investigation.TeamMemberIds" class="control-label">Team Members</label>
-                <select asp-for="Investigation.TeamMemberIds" class="form-control">
+                <label asp-for="Investigation.TeamMembers" class="control-label">Team Members</label>
+                <select asp-for="Investigation.TeamMembers" class="form-control">
                     @foreach (var member in Model.Members)
                     {
                         <option value="@member.Id">@member.UserName</option>
                     }
                 </select>
-                <span asp-validation-for="Investigation.TeamMemberIds" class="text-danger"></span>
+                <span asp-validation-for="Investigation.TeamMembers" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Investigation.PROSCreationDate" class="control-label">Pros Creation Date</label>

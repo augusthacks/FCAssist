@@ -22,84 +22,22 @@ namespace FCAssist.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FCAssist.Models.Investigation", b =>
+            modelBuilder.Entity("FCAUserInvestigation", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("InvestigationsId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FCACreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FileCoordinatorId")
+                    b.Property<string>("TeamMembersId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CaseId")
-                        .HasColumnType("int");
+                    b.HasKey("InvestigationsId", "TeamMembersId");
 
-                    b.Property<string>("OperationName")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("TeamMembersId");
 
-                    b.Property<DateTime>("PROSCreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileCoordinatorId");
-
-                    b.ToTable("Investigation");
+                    b.ToTable("FCAUserInvestigation");
                 });
 
-            modelBuilder.Entity("FCAssist.Models.InvestigationFile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Context")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Format")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("InvestigationId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("InvestigationTaskId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UploadDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UploadedBy")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InvestigationId");
-
-                    b.HasIndex("InvestigationTaskId");
-
-                    b.ToTable("InvestigationFile");
-                });
-
-            modelBuilder.Entity("FCAssist.Models.InvestigationFileContext", b =>
+            modelBuilder.Entity("FCAssist.Models.FileContext", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,7 +54,7 @@ namespace FCAssist.Migrations
                     b.ToTable("InvestigationFileContext");
                 });
 
-            modelBuilder.Entity("FCAssist.Models.InvestigationFileFormat", b =>
+            modelBuilder.Entity("FCAssist.Models.FileFormat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,6 +71,99 @@ namespace FCAssist.Migrations
                     b.ToTable("InvestigationFileFormat");
                 });
 
+            modelBuilder.Entity("FCAssist.Models.Investigation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CaseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FCACreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileCoordinator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OperationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PROSCreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Investigation");
+                });
+
+            modelBuilder.Entity("FCAssist.Models.InvestigationFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CaseId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Context")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FCAUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Format")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("InvestigationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("InvestigationTaskId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaskId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UploadedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FCAUserId");
+
+                    b.HasIndex("InvestigationId");
+
+                    b.HasIndex("InvestigationTaskId");
+
+                    b.ToTable("InvestigationFile");
+                });
+
             modelBuilder.Entity("FCAssist.Models.InvestigationTask", b =>
                 {
                     b.Property<int>("Id")
@@ -141,14 +172,17 @@ namespace FCAssist.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CaseName")
+                    b.Property<string>("AssignedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignedTo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CaseId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDateTime")
                         .HasColumnType("datetime2");
@@ -156,10 +190,10 @@ namespace FCAssist.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("InvestigationId")
-                        .HasColumnType("int");
+                    b.Property<string>("FCAUserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("ParentTaskId")
+                    b.Property<int?>("InvestigationId")
                         .HasColumnType("int");
 
                     b.Property<int>("TaskNumber")
@@ -170,11 +204,9 @@ namespace FCAssist.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById");
+                    b.HasIndex("FCAUserId");
 
                     b.HasIndex("InvestigationId");
-
-                    b.HasIndex("ParentTaskId");
 
                     b.ToTable("InvestigationTask");
                 });
@@ -243,15 +275,16 @@ namespace FCAssist.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("InvestigationId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -288,8 +321,6 @@ namespace FCAssist.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvestigationId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -299,6 +330,10 @@ namespace FCAssist.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -386,43 +421,52 @@ namespace FCAssist.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("FCAssist.Models.Investigation", b =>
+            modelBuilder.Entity("FCAssist.Models.FCAUser", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "FileCoordinator")
-                        .WithMany()
-                        .HasForeignKey("FileCoordinatorId");
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Navigation("FileCoordinator");
+                    b.HasDiscriminator().HasValue("FCAUser");
+                });
+
+            modelBuilder.Entity("FCAUserInvestigation", b =>
+                {
+                    b.HasOne("FCAssist.Models.Investigation", null)
+                        .WithMany()
+                        .HasForeignKey("InvestigationsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FCAssist.Models.FCAUser", null)
+                        .WithMany()
+                        .HasForeignKey("TeamMembersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FCAssist.Models.InvestigationFile", b =>
                 {
+                    b.HasOne("FCAssist.Models.FCAUser", null)
+                        .WithMany("UploadedFiles")
+                        .HasForeignKey("FCAUserId");
+
                     b.HasOne("FCAssist.Models.Investigation", null)
                         .WithMany("InvestigationFiles")
                         .HasForeignKey("InvestigationId");
 
                     b.HasOne("FCAssist.Models.InvestigationTask", null)
-                        .WithMany("RelatedDocuments")
+                        .WithMany("TaskFiles")
                         .HasForeignKey("InvestigationTaskId");
                 });
 
             modelBuilder.Entity("FCAssist.Models.InvestigationTask", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
+                    b.HasOne("FCAssist.Models.FCAUser", null)
+                        .WithMany("AssignedTasks")
+                        .HasForeignKey("FCAUserId");
 
                     b.HasOne("FCAssist.Models.Investigation", null)
                         .WithMany("InvestigationTasks")
                         .HasForeignKey("InvestigationId");
-
-                    b.HasOne("FCAssist.Models.InvestigationTask", "ParentTask")
-                        .WithMany("Subtasks")
-                        .HasForeignKey("ParentTaskId");
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("ParentTask");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -432,13 +476,6 @@ namespace FCAssist.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.HasOne("FCAssist.Models.Investigation", null)
-                        .WithMany("TeamMembers")
-                        .HasForeignKey("InvestigationId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -488,15 +525,18 @@ namespace FCAssist.Migrations
                     b.Navigation("InvestigationFiles");
 
                     b.Navigation("InvestigationTasks");
-
-                    b.Navigation("TeamMembers");
                 });
 
             modelBuilder.Entity("FCAssist.Models.InvestigationTask", b =>
                 {
-                    b.Navigation("RelatedDocuments");
+                    b.Navigation("TaskFiles");
+                });
 
-                    b.Navigation("Subtasks");
+            modelBuilder.Entity("FCAssist.Models.FCAUser", b =>
+                {
+                    b.Navigation("AssignedTasks");
+
+                    b.Navigation("UploadedFiles");
                 });
 #pragma warning restore 612, 618
         }
